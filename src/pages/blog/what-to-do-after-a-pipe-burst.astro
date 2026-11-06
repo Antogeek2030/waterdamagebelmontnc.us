@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+
+const title = 'What to Do After a Pipe Bursts in Your Belmont Home';
+const description = 'Practical first steps when a pipe fails, from shutting off water to protecting belongings and calling for help.';
+const pubDate = '2025-09-12';
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <a href="/blog/">Blog</a>
+        <span> / </span>
+        <span>{title}</span>
+      </nav>
+      <h1>{title}</h1>
+      <p>
+        <time datetime={pubDate}>
+          {new Date(pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container prose">
+      <p>A burst pipe can release a surprising amount of water in a short time. Acting quickly helps limit damage to floors, walls, and belongings. Here is a practical sequence many Belmont homeowners find useful.</p>
+
+      <h2>1. Shut off the water if you can do so safely</h2>
+      <p>Locate your main shutoff valve—often near the water meter, in a basement, crawl space, or utility closet—and turn it off. If you cannot find it or reach it safely, call for help and avoid areas where water and electricity mix.</p>
+
+      <h2>2. Protect yourself and others</h2>
+      <p>Stay out of standing water if electrical outlets or appliances may be involved. Keep children and pets away from the affected area. Use towels or a wet vacuum only if conditions are clearly safe.</p>
+
+      <h2>3. Document the scene</h2>
+      <p>Take photos or short videos of the water, the source if visible, and any damaged materials. This record can help later conversations with insurance or restoration professionals.</p>
+
+      <h2>4. Move what you can</h2>
+      <p>If it is safe, move furniture, rugs, and valuables out of the wet zone. Elevate items on blocks or place them in a dry room. Avoid dragging heavy pieces across saturated floors.</p>
+
+      <h2>5. Call for professional extraction</h2>
+      <p>Household towels and fans help with small spills, but a broken supply line or failed fitting often needs commercial extraction and controlled drying. Prompt professional drying reduces the chance of swelling, staining, and secondary issues such as musty odors.</p>
+      <p>Our team serves Belmont and nearby communities. Call <a href="tel:+18775870125">(877) 587-0125</a> when you need water removed and the structure dried thoroughly.</p>
+
+      <h2>What happens after the water is out</h2>
+      <p>Once standing water is gone, moisture often remains in subfloors, wall cavities, and under cabinets. Moisture meters and proper air movement help bring those materials back to normal levels. Rushing to close up wet areas can trap humidity and create later problems.</p>
+      <p>If you are dealing with a recent pipe failure in the Belmont area, reach out. We can walk through the situation and outline clear next steps.</p>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

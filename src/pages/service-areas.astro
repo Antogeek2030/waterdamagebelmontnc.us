@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { areas } from '../data/areas';
+---
+
+<BaseLayout
+  title="Service Areas | Water Damage Restoration Near Belmont, NC"
+  description="We provide water damage restoration in Belmont, NC and nearby communities including Mount Holly, Cramerton, McAdenville, Lowell, Stanley, and more."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>Service Areas</span>
+      </nav>
+      <h1>Areas We Serve</h1>
+      <p>Belmont is our primary service area. We also respond to water damage calls in neighboring Gaston County communities and selected nearby locations.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid card-grid-3">
+        {areas.map((a) => (
+          <article class="card">
+            <h2 style="font-size: 1.2rem;"><a href={`/areas/${a.slug}/`}>{a.name}</a></h2>
+            <p>{a.description}</p>
+            <a href={`/areas/${a.slug}/`} class="btn btn-secondary">Area details</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Water damage in your area?" text="Call us to confirm availability and response time for your location." />
+</BaseLayout>

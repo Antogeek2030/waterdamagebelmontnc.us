@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+
+const posts = [
+  {
+    slug: 'what-to-do-after-a-pipe-burst',
+    title: 'What to Do After a Pipe Bursts in Your Belmont Home',
+    description: 'Practical first steps when a pipe fails, from shutting off water to protecting belongings and calling for help.',
+    date: '2025-09-12',
+  },
+  {
+    slug: 'signs-of-hidden-water-damage',
+    title: 'Signs of Hidden Water Damage Homeowners Often Miss',
+    description: 'Subtle clues that moisture may be present behind walls, under floors, or in crawl spaces—and why early attention helps.',
+    date: '2025-10-03',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog | Water Damage Tips for Belmont, NC Homeowners"
+  description="Practical articles on water damage prevention, emergency response, and restoration for Belmont, NC property owners."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>Blog</span>
+      </nav>
+      <h1>Blog</h1>
+      <p>Practical guidance on water damage, drying, and protecting your Belmont-area property.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        {posts.map((post) => (
+          <article class="card">
+            <p class="blog-meta">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </p>
+            <h2 style="font-size: 1.25rem;"><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
+            <p>{post.description}</p>
+            <a href={`/blog/${post.slug}/`}>Read article →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

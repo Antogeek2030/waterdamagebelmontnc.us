@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Need water damage help in Belmont?',
+  text = 'Call us for a prompt response. We are ready to assess the situation and outline clear next steps.',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+      <a href={site.phoneHref} class="btn btn-call btn-lg">Call {site.phoneDisplay}</a>
+      <a href="/contact/" class="btn btn-primary btn-lg">Request a callback</a>
+    </div>
+  </div>
+</section>

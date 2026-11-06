@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="About Us | Water Damage Restoration Belmont NC"
+  description="Learn about our Belmont-based water damage restoration team. We focus on practical help, clear communication, and thorough drying for homes and businesses."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>About</span>
+      </nav>
+      <h1>About Our Team</h1>
+      <p>Local water damage restoration focused on Belmont and neighboring communities.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Who we are</h2>
+      <p>
+        We are a water damage restoration team based in Belmont, North Carolina. Our work centers on helping homeowners and business owners recover from unexpected water events—burst pipes, appliance failures, storm intrusion, and flooding.
+      </p>
+      <p>
+        We do not claim to be the largest company in the region or to hold every possible certification. What we do offer is responsive service, careful moisture assessment, commercial-grade drying equipment, and honest communication about what your property needs.
+      </p>
+
+      <h2>How we work</h2>
+      <p>
+        Every job starts with understanding the source of the water and how far it has traveled. We extract standing water, map moisture in floors and walls, and run drying equipment until readings reach appropriate levels. Along the way we explain what we are finding and what options you have.
+      </p>
+      <p>
+        When the situation involves contaminated water or potential mold growth, we follow practices that protect indoor air quality and limit cross-contamination. If repairs beyond our scope are needed, we can point you toward trusted local trades.
+      </p>
+
+      <h2>Where we serve</h2>
+      <p>
+        Belmont is our primary service area. We also respond to calls in Mount Holly, Cramerton, McAdenville, Lowell, Stanley, parts of Gastonia, and selected nearby locations when scheduling and travel time allow. If you are unsure whether we cover your address, just call and ask.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Phone: <a href={site.phoneHref}>{site.phoneDisplay}</a><br />
+        Address: {site.address.full}<br />
+        Available 24/7 for water emergencies.
+      </p>
+      <p>
+        Prefer to write? Use our <a href="/contact/">contact form</a> and we will get back to you.
+      </p>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

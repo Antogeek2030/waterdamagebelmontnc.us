@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.map((s) => ({
+    params: { slug: s.slug },
+    props: { service: s },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <a href="/services/">Services</a>
+        <span> / </span>
+        <span>{service.shortTitle}</span>
+      </nav>
+      <h1>{service.title}</h1>
+      <p>{service.description}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container two-col two-col-aside">
+      <div class="prose">
+        <h2>About this service</h2>
+        <p>{service.intro}</p>
+
+        <h2>Our process</h2>
+        <ol>
+          {service.process.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ol>
+
+        <h2>Investment range</h2>
+        <p>{service.priceRange}</p>
+        <p class="text-muted">Every property is different. We provide a clear estimate after evaluating the situation in person.</p>
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+          {service.faqs.map((faq) => (
+            <details class="faq-item">
+              <summary>{faq.question}</summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" style="position: sticky; top: 5.5rem;">
+          <h3 style="margin-bottom: 0.75rem;">Need this service?</h3>
+          <p class="text-muted" style="font-size: 0.95rem;">Call for a prompt response or request a callback. We serve Belmont and nearby communities.</p>
+          <a href={site.phoneHref} class="btn btn-call" style="width: 100%; margin-bottom: 0.75rem;">
+            Call {site.phoneDisplay}
+          </a>
+          <a href="/contact/" class="btn btn-secondary" style="width: 100%;">
+            Contact form
+          </a>
+          <p style="margin-top: 1.25rem; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Related services</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+            {services
+              .filter((s) => s.slug !== service.slug)
+              .slice(0, 5)
+              .map((s) => (
+                <li style="margin-bottom: 0.35rem;">
+                  <a href={`/services/${s.slug}/`}>{s.shortTitle}</a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

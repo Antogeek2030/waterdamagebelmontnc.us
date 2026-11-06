@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="Terms of use for the waterdamagerestorationbelmontnc.us website."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>Terms of Use</span>
+      </nav>
+      <h1>Terms of Use</h1>
+      <p>Last updated: November 2025</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container prose">
+      <p>
+        By accessing the website {site.domain} (the “Site”), you agree to these terms of use. If you do not agree, please do not use the Site.
+      </p>
+
+      <h2>Purpose of the Site</h2>
+      <p>
+        The Site provides information about water damage restoration services offered in Belmont, NC and nearby communities. Content is for general informational purposes and does not constitute a binding offer, professional advice, or a guarantee of specific results.
+      </p>
+
+      <h2>No professional relationship by browsing</h2>
+      <p>
+        Viewing the Site or submitting a contact form does not create a client relationship. A service agreement is formed only when both parties agree to specific work, typically after an on-site evaluation and acceptance of a scope or estimate.
+      </p>
+
+      <h2>Accuracy of information</h2>
+      <p>
+        We strive to keep information on the Site accurate and current. However, service details, availability, and pricing can change. Always confirm details directly with us before relying on website content for important decisions.
+      </p>
+
+      <h2>User conduct</h2>
+      <p>
+        You agree not to use the Site in any way that is unlawful, harmful, or that interferes with the Site’s operation. Automated scraping or excessive automated requests without permission is prohibited.
+      </p>
+
+      <h2>Intellectual property</h2>
+      <p>
+        Text, design, and other original content on the Site are owned by us or used with permission. You may not copy, reproduce, or redistribute substantial portions without prior written consent, except for personal, non-commercial use or as allowed by fair use.
+      </p>
+
+      <h2>Third-party links and services</h2>
+      <p>
+        The Site may reference or link to third-party services (such as form processing). We are not responsible for the content or practices of those third parties.
+      </p>
+
+      <h2>Limitation of liability</h2>
+      <p>
+        To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the Site or reliance on its content. Our total liability related to the Site shall not exceed the amount you paid us, if any, for access to the Site (which is free).
+      </p>
+
+      <h2>Indemnification</h2>
+      <p>
+        You agree to indemnify and hold us harmless from claims arising out of your misuse of the Site or violation of these terms.
+      </p>
+
+      <h2>Governing law</h2>
+      <p>
+        These terms are governed by the laws of the State of North Carolina, without regard to conflict-of-law principles. Any disputes shall be resolved in the courts located in Gaston County, North Carolina, unless otherwise required by law.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        We may revise these terms at any time. Continued use of the Site after changes constitutes acceptance of the updated terms. The “last updated” date indicates the most recent revision.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms may be sent via our <a href="/contact/">contact form</a> or by calling <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

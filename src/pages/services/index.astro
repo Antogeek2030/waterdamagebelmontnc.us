@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { services } from '../../data/services';
+---
+
+<BaseLayout
+  title="Water Damage Services in Belmont, NC"
+  description="Browse our full list of water damage restoration services in Belmont, NC—including flood cleanup, emergency water removal, mold remediation, and more."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>Services</span>
+      </nav>
+      <h1>Water Damage Services</h1>
+      <p>From emergency extraction to structural drying and specialized cleanup, explore the services we provide across Belmont and nearby communities.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid card-grid-3">
+        {services.map((s) => (
+          <article class="card">
+            <h2 style="font-size: 1.15rem;"><a href={`/services/${s.slug}/`}>{s.shortTitle}</a></h2>
+            <p>{s.description}</p>
+            <a href={`/services/${s.slug}/`} class="btn btn-secondary">Details</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Not sure which service you need?" text="Describe the situation and we will help you understand the best next step." />
+</BaseLayout>

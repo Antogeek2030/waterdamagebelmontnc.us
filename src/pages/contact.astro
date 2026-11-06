@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const thankYou = Astro.url.searchParams.get('thank-you') === '1';
+---
+
+<BaseLayout
+  title="Contact Us | Water Damage Restoration Belmont NC"
+  description="Contact our Belmont water damage team by phone or form. Available for emergency water removal and restoration questions. Call (877) 587-0125."
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <span>Contact</span>
+      </nav>
+      <h1>Contact Us</h1>
+      <p>Reach out by phone for the fastest response, or send a message and we will reply as soon as we can.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        {thankYou ? (
+          <div class="form-success" role="status">
+            <h2 style="margin-top: 0; color: #065f46;">Thank you</h2>
+            <p style="margin-bottom: 0;">Your message has been sent. We will review it and get back to you shortly. If this is an emergency, please call us directly at <a href={site.phoneHref}>{site.phoneDisplay}</a>.</p>
+          </div>
+        ) : (
+          <>
+            <h2 class="mt-0">Send a message</h2>
+            <p class="text-muted">For active water emergencies, calling is the fastest way to reach us.</p>
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="contact-form"
+            >
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="New contact from waterdamagerestorationbelmontnc.us" />
+              <input type="hidden" name="from_name" value="Website Contact Form" />
+              <input type="hidden" name="redirect" value="https://waterdamagerestorationbelmontnc.us/contact/?thank-you=1" />
+              <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <div class="form-group">
+                <label for="name">Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" required autocomplete="name" />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone <span aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" />
+              </div>
+
+              <div class="form-group">
+                <label for="service">How can we help?</label>
+                <select id="service" name="service">
+                  <option value="">Select a topic</option>
+                  <option value="Emergency water removal">Emergency water removal</option>
+                  <option value="Flood cleanup">Flood cleanup</option>
+                  <option value="Pipe or appliance leak">Pipe or appliance leak</option>
+                  <option value="Mold concern">Mold concern</option>
+                  <option value="General question">General question</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" required placeholder="Briefly describe the situation and your location."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg">Send message</button>
+            </form>
+          </>
+        )}
+      </div>
+
+      <div>
+        <div class="card">
+          <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Direct contact</h2>
+          <p style="margin-bottom: 0.5rem;"><strong>Phone</strong></p>
+          <p style="margin-bottom: 1.25rem;">
+            <a href={site.phoneHref} class="btn btn-call">{site.phoneDisplay}</a>
+          </p>
+          <p style="margin-bottom: 0.5rem;"><strong>Address</strong></p>
+          <p class="text-muted" style="margin-bottom: 1.25rem;">{site.address.full}</p>
+          <p style="margin-bottom: 0.5rem;"><strong>Hours</strong></p>
+          <p class="text-muted" style="margin-bottom: 0;">{site.hours}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

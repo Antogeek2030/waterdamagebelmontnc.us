@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+
+const title = 'Signs of Hidden Water Damage Homeowners Often Miss';
+const description = 'Subtle clues that moisture may be present behind walls, under floors, or in crawl spaces—and why early attention helps.';
+const pubDate = '2025-10-03';
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <a href="/blog/">Blog</a>
+        <span> / </span>
+        <span>{title}</span>
+      </nav>
+      <h1>{title}</h1>
+      <p>
+        <time datetime={pubDate}>
+          {new Date(pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container prose">
+      <p>Not every water problem announces itself with a visible puddle. Slow leaks, minor roof intrusion, and elevated humidity in crawl spaces can go unnoticed until secondary effects appear. Catching these signs early often keeps the repair smaller and less disruptive.</p>
+
+      <h2>Musty or earthy odors</h2>
+      <p>A persistent musty smell, especially in closets, basements, or near exterior walls, can indicate moisture supporting microbial growth. The odor may be stronger after humid weather or when the HVAC runs.</p>
+
+      <h2>Discoloration or soft spots</h2>
+      <p>Brownish or yellowish stains on ceilings and walls are classic clues. Soft or spongy drywall, baseboards that feel damp, or flooring that buckles or cups also point to moisture that needs attention.</p>
+
+      <h2>Peeling paint or warped trim</h2>
+      <p>Paint that bubbles or peels, wallpaper that loosens, or wood trim that warps or separates from the wall can result from water migrating through materials. These symptoms sometimes appear well after the original leak has slowed or stopped.</p>
+
+      <h2>Elevated humidity or condensation</h2>
+      <p>Windows that fog excessively, or rooms that feel consistently damper than the rest of the house, may signal a moisture source nearby—sometimes in a wall cavity, under a floor, or in a poorly ventilated crawl space.</p>
+
+      <h2>Higher utility bills without explanation</h2>
+      <p>In some cases, a hidden leak increases water usage. Comparing recent bills to the same period in prior years can reveal unusual patterns worth investigating.</p>
+
+      <h2>What to do if you notice these signs</h2>
+      <p>Start by checking obvious sources: under sinks, around toilets, near the water heater, and at appliance connections. Look at the attic for damp insulation or staining on the underside of the roof deck. If the source is unclear or the affected area is large, a professional moisture inspection can map wet materials without unnecessary demolition.</p>
+      <p>Addressing hidden moisture promptly helps protect finishes, indoor air quality, and structural materials. If you are in Belmont or a nearby community and want an assessment, call <a href="tel:+18775870125">(877) 587-0125</a>. We can help determine whether drying or further investigation is warranted.</p>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { areas } from '../../data/areas';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return areas.map((a) => ({
+    params: { slug: a.slug },
+    props: { area: a },
+  }));
+}
+
+const { area } = Astro.props;
+const relatedServices = services.slice(0, 6);
+---
+
+<BaseLayout
+  title={`Water Damage Restoration in ${area.name}, NC`}
+  description={area.metaDescription}
+>
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span> / </span>
+        <a href="/service-areas/">Service Areas</a>
+        <span> / </span>
+        <span>{area.name}</span>
+      </nav>
+      <h1>Water Damage Restoration in {area.name}</h1>
+      <p>{area.description}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container two-col two-col-aside">
+      <div class="prose">
+        <h2>Serving {area.name}</h2>
+        <p>{area.intro}</p>
+
+        <h2>What you can expect</h2>
+        <ul>
+          {area.highlights.map((h) => (
+            <li>{h}</li>
+          ))}
+        </ul>
+
+        <h2>Common services in {area.name}</h2>
+        <p>Property owners in {area.name} most often call us for emergency water removal, flood cleanup, pipe burst restoration, and appliance leak drying. We also handle mold remediation when moisture has been present long enough to support growth.</p>
+        <ul>
+          {relatedServices.map((s) => (
+            <li><a href={`/services/${s.slug}/`}>{s.shortTitle}</a></li>
+          ))}
+        </ul>
+        <p><a href="/services/">View the full list of services →</a></p>
+      </div>
+
+      <aside>
+        <div class="card" style="position: sticky; top: 5.5rem;">
+          <h3 style="margin-bottom: 0.75rem;">Need help in {area.name}?</h3>
+          <p class="text-muted" style="font-size: 0.95rem;">Call for response time and availability. We serve Belmont and nearby communities.</p>
+          <a href={site.phoneHref} class="btn btn-call" style="width: 100%; margin-bottom: 0.75rem;">
+            Call {site.phoneDisplay}
+          </a>
+          <a href="/contact/" class="btn btn-secondary" style="width: 100%;">
+            Contact form
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTA title={`Water damage in ${area.name}?`} text="Reach out and we will discuss the situation and next steps." />
+</BaseLayout>

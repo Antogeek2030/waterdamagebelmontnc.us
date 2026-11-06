@@ -1,0 +1,124 @@
+---
+import { site, navLinks } from '../data/site';
+import { services } from '../data/services';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label={`${site.name} home`}>
+      Water Damage <span>Belmont</span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-list">
+        {navLinks.map((link) => {
+          if (link.href === '/services/') {
+            return (
+              <li class="nav-item-has-dropdown">
+                <a
+                  href={link.href}
+                  aria-current={pathname.startsWith('/services') ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+                <div class="nav-dropdown" role="menu">
+                  {services.map((s) => (
+                    <a href={`/services/${s.slug}/`} role="menuitem">{s.shortTitle}</a>
+                  ))}
+                </div>
+              </li>
+            );
+          }
+          return (
+            <li>
+              <a
+                href={link.href}
+                aria-current={
+                  link.href === '/'
+                    ? pathname === '/' ? 'page' : undefined
+                    : pathname.startsWith(link.href) ? 'page' : undefined
+                }
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href={site.phoneHref} class="btn btn-call">
+        {site.phoneDisplay}
+      </a>
+    </div>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open menu"
+      id="menu-toggle"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    <ul class="mobile-nav-list">
+      {navLinks.map((link) => {
+        if (link.href === '/services/') {
+          return (
+            <li>
+              <button type="button" class="mobile-services-toggle" aria-expanded="false" id="mobile-services-btn">
+                Services
+                <span aria-hidden="true">▾</span>
+              </button>
+              <ul class="mobile-services-list" id="mobile-services-list">
+                <li><a href="/services/">All Services</a></li>
+                {services.map((s) => (
+                  <li><a href={`/services/${s.slug}/`}>{s.shortTitle}</a></li>
+                ))}
+              </ul>
+            </li>
+          );
+        }
+        return (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        );
+      })}
+    </ul>
+    <div class="mobile-call">
+      <a href={site.phoneHref} class="btn btn-call" style="width:100%;">
+        Call {site.phoneDisplay}
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const servicesBtn = document.getElementById('mobile-services-btn');
+  const servicesList = document.getElementById('mobile-services-list');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    mobileNav?.classList.toggle('is-open', !open);
+  });
+
+  servicesBtn?.addEventListener('click', () => {
+    const open = servicesBtn.getAttribute('aria-expanded') === 'true';
+    servicesBtn.setAttribute('aria-expanded', String(!open));
+    servicesList?.classList.toggle('is-open', !open);
+  });
+</script>
